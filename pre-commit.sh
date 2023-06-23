@@ -52,19 +52,31 @@ gitleaksInstall () {
   echo "gitleaks installed"
 }
 
-hooksStatus () {
+hooksInstall () {
 
-  ls $PWD/.git/hooks/pre-commit &> /dev/null
+  ls $PWD/.git/hooks &> /dev/null
     if [[ $? != 0 ]]; then
+      echo "Run the script in your git repository. The script did not find the .git/hooks directory in the current path"
+      exit 1
+     else
       echo "pre-commit not found. Installation pre-commit."
       curl -sSL -o .git/hooks/pre-commit https://raw.githubusercontent.com/Njrk/pre-commit/main/pre-commit.sh
       chmod +x .git/hooks/pre-commit
       echo "pre-commit installed"
-      echo ""
+      echo "#################################"
       echo "To activate it, run the command: git config hooks.gitleaks enable"
-      echo ""
+      echo "#################################"
       exit 0
     fi
+
+}
+
+hooksStatus () {
+
+    ls $PWD/.git/hooks/pre-commit &> /dev/null
+      if [[ $? != 0 ]]; then
+        hooksInstall
+      fi
 }
 
 gitleaksStatus () {
@@ -83,10 +95,12 @@ gitleaksChecks () {
     if [[ $? == 0 ]]; then
         echo "----------------------------------"
         echo "No secrets found. Commit allowed."
+        echo "----------------------------------"
         exit 0
     else
         echo "----------------------------------"
         echo "Secrets found in the code. Commit rejected."
+        echo "----------------------------------"
         exit 1
     fi
 }
