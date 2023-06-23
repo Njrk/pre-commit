@@ -57,7 +57,7 @@ hooksStatus () {
   ls $PWD/.git/hooks/pre-commit &> /dev/null
     if [[ $? != 0 ]]; then
       echo "pre-commit not found. Installation pre-commit."
-      curl -sSL -o .git/hooks/pre-commit https://raw.githubusercontent.com/Njrk/test3/main/test.sh
+      curl -sSL -o .git/hooks/pre-commit https://raw.githubusercontent.com/Njrk/pre-commit/main/pre-commit.sh
       chmod +x .git/hooks/pre-commit
       echo "pre-commit installed"
       echo ""
