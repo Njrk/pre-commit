@@ -68,7 +68,6 @@ hooksInstall () {
       echo "#################################"
       exit 0
     fi
-
 }
 
 hooksStatus () {
