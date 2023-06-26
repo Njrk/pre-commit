@@ -22,8 +22,6 @@ gitleaksInstall () {
       gl_link=${gl_linkbase}/${gl_latest}/gitleaks_${gl_latest#v}_linux_x32.tar.gz
     elif [[ "$arh" == "aarch64" ]]; then
       gl_link=${gl_linkbase}/${gl_latest}/gitleaks_${gl_latest#v}_linux_arm64.tar.gz
-    elif [[ "$arh" == "aarch64" ]]; then
-      gl_link=${gl_linkbase}/${gl_latest}/gitleaks_${gl_latest#v}_linux_arm64.tar.gz
     elif [[ "$arh" == "armv6l" ]]; then
       gl_link=${gl_linkbase}/${gl_latest}/gitleaks_${gl_latest#v}_linux_armv6.tar.gz
     elif [[ "$arh" == "armv7l" ]]; then
@@ -35,7 +33,7 @@ gitleaksInstall () {
   elif [[ "$os" == "Darwin" ]]; then
     if [[ "$arh" == "x86_64" ]]; then
       gl_link=${gl_linkbase}/${gl_latest}/gitleaks_${gl_latest#v}_darwin_x64.tar.gz
-    elif [[ "$arh" == "aarch64" ]]; then
+    elif [[ "$arh" == "arm64" ]]; then
       gl_link=${gl_linkbase}/${gl_latest}/gitleaks_${gl_latest#v}_darwin_arm64.tar.gz
     else
       echo "Unsupported architecture: ${arh}"
